@@ -9,8 +9,8 @@ It does two things:
    `api/hevo/businessCentral/v1.0`, with `systemModifiedAt` on every page so Hevo can sync
    incrementally.
 2. **Captures deletes.** Every delete of a row those pages read is recorded (in the same
-   transaction) in a per-company feed, so Hevo can mark the row deleted on its next incremental
-   sync instead of waiting for a full re-read.
+   transaction) in a per-company feed, and Hevo marks the row deleted on its next incremental
+   sync. This feed is how Hevo detects deletes: it does not re-read your tables on a schedule.
 
 The whole extension is one file, [`src/HevoBusinessCentralConnector.al`](src/HevoBusinessCentralConnector.al),
 with its manifest in [`app.json`](app.json).
@@ -18,7 +18,7 @@ with its manifest in [`app.json`](app.json).
 | | |
 |---|---|
 | Publisher / name | Hevo Data / Hevo Business Central Connector |
-| Version | 1.2.0.0 |
+| Version | 1.2.1.0 |
 | Target | Business Central online (Cloud), platform and application 28.0+, AL runtime 17.0 |
 | Dependencies | none beyond Microsoft's Base and System Application |
 | Object IDs | 86500–86649 |
@@ -71,7 +71,7 @@ Companies themselves come from Business Central's built-in `companies` entity.
 1. **Build the `.app`.** Open this folder in VS Code with the
    [AL Language extension](https://marketplace.visualstudio.com/items?itemName=ms-dynamics-smb.al),
    run **AL: Download symbols** against a sandbox, then **AL: Package** (`Ctrl+Shift+B`).
-   This produces `Hevo Data_Hevo Business Central Connector_1.2.0.0.app`.
+   This produces `Hevo Data_Hevo Business Central Connector_1.2.1.0.app`.
 2. **Upload it.** In Business Central open **Extension Management → Manage → Upload Extension**,
    choose the `.app`, and deploy it. Try a sandbox environment first.
 3. **Grant access.** Assign the `HEVO READ` permission set to the user, or Microsoft Entra
@@ -83,6 +83,8 @@ Companies themselves come from Business Central's built-in `companies` entity.
    row with `deleteCaptureEnabled = true`.
 
 Upgrading from an earlier version of this extension is done in place by uploading the new `.app`.
+From 1.2.1.0, installing or upgrading also turns delete capture back on in any company where it
+was turned off.
 
 ## Permissions
 
@@ -96,9 +98,16 @@ The extension stores no credentials, tokens or URLs and makes no outbound HTTP r
 
 ## Delete capture
 
-- Capture is **on by default** in every company: the setup row is created on install, upgrade and
-  when a new company is created. An admin can turn it off per company on the **Hevo Integration
-  Setup** page.
+- Capture is **on by default** in every company: the setup row is created with capture on when the
+  extension is installed or upgraded and when a new company is created, and installing or
+  upgrading turns it back on where an admin had turned it off.
+- **Keep it on.** Hevo reads deletes only from this feed. While capture is off in a company (on the
+  **Hevo Integration Setup** page), every Hevo Pipeline that syncs that company fails with a message
+  saying so. Deletes made while it was off are not recorded: after turning it back on, resync the
+  Pipeline's objects for that company.
+- **Gaps are reported, not hidden.** If the feed no longer holds every delete since Hevo last read
+  it (capture turned off and on, the extension reinstalled, or deleted records purged by the
+  retention policy before Hevo read them), the affected objects fail until they are resynced.
 - The tombstone is written **inside the deleting transaction**, so a rolled-back delete leaves none
   and a committed delete always has one. Temporary records are ignored.
 - Capture **never makes a delete fail**: the tombstone and setup tables grant the needed access to
@@ -112,11 +121,17 @@ The extension stores no credentials, tokens or URLs and makes no outbound HTTP r
 - **Bulk deletes get slower.** While a table has a delete subscriber, Business Central runs
   `DeleteAll` row by row, and each row writes a tombstone. Posting large journals, date compression
   and other bulk deletes on the exposed tables take longer.
-- **Uninstalling stops capture.** Reinstalling restarts `deletesCompleteFrom`; uninstalling with
-  *Delete Extension Data* removes the tombstones and setup.
+- **Uninstalling stops capture.** Reinstalling restarts `deletesCompleteFrom`, so Hevo Pipelines
+  that synced before the uninstall need a resync; uninstalling with *Delete Extension Data* removes
+  the tombstones and setup.
+- **Some deletes cannot be recorded.** A row deleted by code that never read it (key fields set,
+  then `Delete`) has no `systemId` to record; the extension logs telemetry event `HEVO-0001`, and the
+  row is marked deleted only when its object is next resynced.
 - **Obsolete fields are not exposed.** Fields Microsoft has marked for removal (today
   `Customer."Invoice Copies"`) are left out so the extension keeps compiling across major updates.
-- **FlowFields** are calculated on read and don't move `systemModifiedAt`.
+- **FlowFields** (balances, remaining amounts, inventory) are calculated on read and don't move
+  `systemModifiedAt`, so a change to one is picked up only when its row changes or the object is
+  resynced.
 - **Blob fields** (`picture`, `workDescription`) are OData streams and are not inlined;
   **Media/MediaSet fields** (`image`, item `picture`) return the media ID, not the image.
 - **Localisations** that remove a US/W1 Base Application field will fail to compile.
