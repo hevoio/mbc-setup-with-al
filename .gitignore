@@ -1,2 +1,11 @@
 .DS_Store
 .idea
+
+# AL build artefacts and per-environment symbol packages
+.alpackages/
+.snapshots/
+.vscode/
+*.app
+rad.json
+*.g.xlf
+out/
