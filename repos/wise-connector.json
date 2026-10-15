@@ -1,0 +1,13 @@
+{
+  "repo-name": "wise-connector",
+  "code-owners": "@agarwalchirag77",
+  "repo-description": "Evaluating customer usecase to review HCA",
+  "team": "dev",
+  "jira-id": "H2-50020",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/BAAyQAE",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "wise",
+    "framework": "connector_framework"
+  }
+}

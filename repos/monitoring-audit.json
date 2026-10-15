@@ -1,0 +1,11 @@
+{
+  "repo-name": "monitoring-audit",
+  "code-owners": "@hkarira1",
+  "repo-description": "Automated infrastructure monitoring audit - recurring coverage, drift and waste detection",
+  "team": "platform",
+  "jira-id": "INF-1465",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/INFRA/pages/5749014542/Automated+Infrastructure+Monitoring+Audit+WIP",
+  "repo-config": {
+    "type": "general"
+  }
+}

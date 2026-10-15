@@ -1,0 +1,13 @@
+{
+  "repo-name": "getroster-connector",
+  "code-owners": "@amisra97 @manju-m-hevo",
+  "repo-description": "Get Roster connector Repo",
+  "team": "dev",
+  "jira-id": "HC-201",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/~62a4421c8783e7006f63ce18/pages/5583011851/Connector+for+Caraway",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "getroster",
+    "framework": "connector_framework"
+  }
+}

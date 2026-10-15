@@ -1,0 +1,13 @@
+{
+  "repo-name": "trial-connector",
+  "code-owners": "@aravmanaktala @prateetishukla",
+  "repo-description": "Trial Repo creation for test",
+  "team": "dev",
+  "jira-id": "DE-60",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5399478360/Connector+development+using+HCA+from+scratch",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "trial",
+    "framework": "connector_framework"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "repo-name": "mongo-connector",
+  "code-owners": "@jeelshah7 @sashireddy",
+  "repo-description": "connector for mongodb",
+  "team": "dev",
+  "jira-id": "HEVO-19782",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5270929450/MongoDB+Connector+GTM+Readiness+Review+Q4+25+Q1+26+Plan",
+  "repo-config": {
+    "type": "java",
+    "group-id": "io.hevo",
+    "artefact-id": "mongo",
+    "java-package-type": "service"
+  }
+}

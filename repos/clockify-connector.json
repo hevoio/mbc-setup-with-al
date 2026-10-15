@@ -1,0 +1,13 @@
+{
+  "repo-name": "clockify-connector",
+  "code-owners": "@anmol00804 @amisra97 @manju-m-hevo",
+  "repo-description": "Clockify connector for Hevo",
+  "team": "dev",
+  "jira-id": "HC-57",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5401346051/Clockify+Connector+for+demo",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "clockify",
+    "framework": "connector_framework"
+  }
+}

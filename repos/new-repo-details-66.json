@@ -1,0 +1,11 @@
+{
+  "repo-name": "recommendation-service",
+  "code-owners": "@marshallKR7 @ujwalhevo @abhilash",
+  "repo-description": "A RAG+LLM system that recommends and summarizes documentation for user support queries",
+  "team": "dev",
+  "jira-id": "DEST-788",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/AoA7HQE",
+  "repo-config": {
+    "language": "general"
+  }
+}

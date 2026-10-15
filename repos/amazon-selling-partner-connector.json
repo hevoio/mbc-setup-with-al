@@ -1,0 +1,13 @@
+{
+  "repo-name": "amazon-selling-partner-connector",
+  "code-owners": "@aneeshtejas-arch",
+  "repo-description": "Amazon Selling Partner (SP-API) connector for Hevo Edge platform \u2014 HC-72",
+  "team": "dev",
+  "jira-id": "HC-72",
+  "confluence-url": "https://hevodata.atlassian.net/browse/HC-72",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "amazon-selling-partner",
+    "framework": "connector_framework"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "repo-name": "okendo-connector",
+  "code-owners": "@amisra97 @manju-m-hevo",
+  "repo-description": "Okendo connector repo",
+  "team": "dev",
+  "jira-id": "HC-206",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/~62a4421c8783e7006f63ce18/pages/5583011851/Connector+for+Caraway",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "okendo",
+    "framework": "connector_framework"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "repo-name": "qualtrics-connector",
+  "code-owners": "@amisra97 @abhilash @sashireddy",
+  "repo-description": "Qualtrics connector on top of hevo-sdk",
+  "team": "dev",
+  "jira-id": "H2-19633",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/SgDPFwE",
+  "repo-config": {
+    "language": "java",
+    "group-id": "io.hevo",
+    "artefact-id": "qualtrics-connector",
+    "repo_type": "lib"
+  }
+}

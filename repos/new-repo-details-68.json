@@ -1,0 +1,14 @@
+{
+  "repo-name": "webhook-service",
+  "code-owners": "@utsav-varia @sashireddy @abhilash",
+  "repo-description": "Webhook service for Hevo 2.0",
+  "team": "dev",
+  "jira-id": "H2-21943",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/folder/4853563421?atlOrigin=eyJpIjoiNmRmZWIwZjI1MjU5NDI4NDkzMTg0ZGM2NTExMmY1NGIiLCJwIjoiYyJ9",
+  "repo-config": {
+    "language": "java",
+    "group-id": "io.hevo",
+    "artefact-id": "webhook-service",
+    "repo_type": "service"
+  }
+}

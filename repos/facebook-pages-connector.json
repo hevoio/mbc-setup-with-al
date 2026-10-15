@@ -1,0 +1,13 @@
+{
+  "repo-name": "facebook-pages-connector",
+  "code-owners": "@manju-m-hevo @pranshumaheshwari16",
+  "repo-description": "Facebook Pages Connector",
+  "team": "dev",
+  "jira-id": "HC-136",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/edit-v2/5735219228?draftShareId=6deb476b-096a-4ecf-b23f-9439ae018fce",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "facebook-pages",
+    "framework": "connector_framework"
+  }
+}

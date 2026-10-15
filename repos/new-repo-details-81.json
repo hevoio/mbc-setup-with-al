@@ -1,0 +1,11 @@
+{
+  "repo-name": "signals-ui",
+  "code-owners": "@aruntcet2010 @abhilashtdharan",
+  "repo-description": "Hevo Signals UI",
+  "team": "dev",
+  "jira-id": "HES-1",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/PROD/pages/5253955721/Hevo+Signals+Brief",
+  "repo-config": {
+    "type": "general"
+  }
+}

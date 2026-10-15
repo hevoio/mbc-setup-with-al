@@ -1,0 +1,11 @@
+{
+  "repo-name": "connector-foundry",
+  "code-owners": "@abhilashtdharan @adrijshikhar @aruntcet2010 @ash070397",
+  "repo-description": "Ai Connector Harness for Connect AI",
+  "team": "dev",
+  "jira-id": "HA-1",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/715751721/Hevo+Activate",
+  "repo-config": {
+    "type": "general"
+  }
+}

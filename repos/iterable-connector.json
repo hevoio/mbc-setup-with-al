@@ -1,0 +1,13 @@
+{
+  "repo-name": "iterable-connector",
+  "code-owners": "@anmol00804 @amisra97 @manju-m-hevo @sanskarmundhra @sumit-hevo",
+  "repo-description": "iterable-connector",
+  "team": "dev",
+  "jira-id": "HC-168",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/HAAnYgE",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "iterable",
+    "framework": "connector_framework"
+  }
+}

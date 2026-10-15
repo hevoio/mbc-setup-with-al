@@ -1,0 +1,13 @@
+{
+  "repo-name": "hubspot-legacy-connector",
+  "code-owners": "@abhilash-hevo @anmol00804 @gauri-ket @iamshahjahan @ruchirk-hd",
+  "repo-description": "This is a hubspot legacy connector that only supports standard objects. This is solely ",
+  "team": "platform",
+  "jira-id": "H2-222408",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5909839876/HLD+Hubspot+Migration",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "hubspot-legacy",
+    "framework": "connector_framework"
+  }
+}

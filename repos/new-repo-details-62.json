@@ -1,0 +1,11 @@
+{
+    "repo-name": "connector-repository",
+    "code-owners": "@sar009 @abhilash @amit-hevodata",
+    "repo-description": "Connector Repository Service",
+    "team": "dev",
+    "jira-id": "H2-11311",
+    "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/4769677313/Design+-+Connector+Registry+for+CF+Connector+Distribution",
+    "repo-config": {
+        "language": "general"
+    }
+}

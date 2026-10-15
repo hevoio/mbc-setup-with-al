@@ -1,0 +1,11 @@
+{
+  "repo-name": "cerebra",
+  "code-owners": "@aruntcet2010 @NitinBindal-Hevo",
+  "repo-description": "Support AI Agent",
+  "team": "dev",
+  "jira-id": "H2-89281",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5329256462/WIP+Hevo+Support+Automation+AI+Agent",
+  "repo-config": {
+    "type": "general"
+  }
+}

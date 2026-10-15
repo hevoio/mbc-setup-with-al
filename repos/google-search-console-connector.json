@@ -1,0 +1,13 @@
+{
+  "repo-name": "google-search-console-connector",
+  "code-owners": "@anmol00804 @amisra97 @manju-m-hevo @shubhamsharma1811 @sumit-hevo",
+  "repo-description": "Google search console",
+  "team": "dev",
+  "jira-id": "HC-132",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/IQANXQE",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "google-search-console",
+    "framework": "connector_framework"
+  }
+}

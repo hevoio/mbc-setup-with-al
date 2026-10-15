@@ -1,0 +1,13 @@
+{
+  "repo-name": "campaign-monitor-connector",
+  "code-owners": "@amisra97 @manju-m-hevo @utsav-varia",
+  "repo-description": "Campaign Monitor source connector \u2014 clients, campaigns, lists/subscribers, and campaign performance (sends, opens, clicks, bounces, unsubscribes, spam complaints).",
+  "team": "dev",
+  "jira-id": "HC-319",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5864292355/Campaign+Monitor+Connector+-+Research+Doc",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "campaign-monitor",
+    "framework": "connector_framework"
+  }
+}

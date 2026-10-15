@@ -1,0 +1,14 @@
+{
+  "repo-name": "edge-runbooks",
+  "code-owners": "@lazy-ninja @abhilash @Anubhav410 @talha31093 @shashank-hevo",
+  "repo-description": "On-call runbooks for Hevo Edge",
+  "team": "dev",
+  "jira-id": "H2-10703",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/4036919304/Hevo+Edge+Oncall+Runbook",
+  "repo-config": {
+    "language": "general",
+    "group-id": "io.hevo",
+    "artefact-id": "edge-runbooks",
+    "repo_type": "lib"
+  }
+}

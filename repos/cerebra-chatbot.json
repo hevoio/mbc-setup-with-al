@@ -1,0 +1,11 @@
+{
+  "repo-name": "cerebra-chatbot",
+  "code-owners": "@aruntcet2010 @NitinBindal-Hevo",
+  "repo-description": "This is cerebra production chat bot",
+  "team": "dev",
+  "jira-id": "H2-89281",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5583110145/WIP+Cerebra+Production+Chatbot",
+  "repo-config": {
+    "type": "general"
+  }
+}

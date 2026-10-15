@@ -1,0 +1,13 @@
+{
+  "repo-name": "tiktok-organic-connector",
+  "code-owners": "@manju-m-hevo @pranshumaheshwari16",
+  "repo-description": "TikTok Organic Connector",
+  "team": "dev",
+  "jira-id": "HC-300",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5816123419/TikTok+Organic+Connector+Current+Situation+Auth+Plan",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "tiktok-organic",
+    "framework": "connector_framework"
+  }
+}

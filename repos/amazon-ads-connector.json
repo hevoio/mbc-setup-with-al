@@ -1,0 +1,13 @@
+{
+  "repo-name": "amazon-ads-connector",
+  "code-owners": "@anmol00804 @amisra97 @manju-m-hevo @sanskarmundhra",
+  "repo-description": "Amazon Ads Connector",
+  "team": "dev",
+  "jira-id": "HC-267",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5754519616/Amazon+Ads+Connector+-+Research+Doc",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "amazon-ads",
+    "framework": "connector_framework"
+  }
+}

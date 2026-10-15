@@ -1,0 +1,89 @@
+version: 2.1
+orbs:
+  gh: circleci/github-cli@2.3.0
+  jq: circleci/jq@3.0.0
+
+jobs:
+  validate-new-repo-json:
+    machine:
+      image: default
+    resource_class: medium
+    shell: /bin/bash --login
+    working_directory: ~/project
+    environment:
+      GITHUB_TOKEN: GH_TOKEN
+    steps:
+      - checkout:
+          path: ~/project
+      - gh/setup
+      - jq/install:
+          override: true
+          version: jq-1.7
+      - run:
+          name: Validate new repo input provided
+          command: ./.circleci/validate-json.sh
+      - run: |
+          cp $BASH_ENV bash.env
+      - persist_to_workspace:
+          root: .
+          paths:
+            - bash.env
+  new-repo-creation:
+    machine:
+      image: default
+    resource_class: medium
+    shell: /bin/bash --login
+    working_directory: ~/project
+    environment:
+      GITHUB_TOKEN: GH_ADMIN_TOKEN
+    steps:
+      - checkout:
+          path: ~/project
+      - gh/setup
+      - jq/install:
+          override: true
+          version: jq-1.7
+      - attach_workspace:
+          at: .
+      - run: |
+          cat bash.env >> $BASH_ENV
+      - run:
+          name: Check if repo creation should be skipped
+          command: |
+            if [[ "$skip_repo_creation" == "true" ]]; then
+              echo "No repo details file in this commit. Skipping repo creation."
+              circleci-agent step halt
+            fi
+      - run:
+          name: Setup java and maven if type is java
+          command: ./.circleci/setup-java.sh
+      - run:
+          name: Create new repo using template
+          command: ./.circleci/create-repo.sh
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:721iHdvInx4iFO+tnXsFTec7AJQqwrm+jd+S9EF8dBs"
+      - run:
+          name: Add public key to .ssh directory.
+          command: echo ${GITHUB_ECDSA_PUBLIC} > ~/.ssh/id_rsa_848d8303cbe1bc703d9772fc10270a3e.pub
+      - run:
+          name: Setup type specific repo configuration
+          command: ./.circleci/setup-repo.sh
+
+workflows:
+  PR check workflow:
+    jobs:
+      - validate-new-repo-json:
+          context:
+            - org-global
+          filters:
+            branches:
+              only: /.*/
+      - new-repo-creation:
+          context:
+            - org-global
+          requires:
+            - validate-new-repo-json
+          filters:
+            branches:
+              only: dev

@@ -1,0 +1,14 @@
+{
+  "repo-name": "proxy-agent",
+  "code-owners": "@bhavesh-hevo @fakrudeenahamed-hevo @hkarira1 @surajlalwani-sys @vkiooz",
+  "repo-description": "A tunnel that lets Hevo reach a customer's private database without any inbound access on their side \u2014 an outbound-only agent in the customer's network connects to a proxy behind Hevo's NLB, over SSH for data and mutual-TLS gRPC for control, with a central TMS issuing and tracking certificates and tunnels. Contains the TMS, the proxy and the agent.",
+  "team": "platform",
+  "jira-id": "DEVX-667",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEVX/pages/5971017729/Proxy-Agent-over-SSH-Design-v2",
+  "repo-config": {
+    "type": "java",
+    "group-id": "io.hevo",
+    "artefact-id": "proxy-agent",
+    "java-package-type": "service"
+  }
+}

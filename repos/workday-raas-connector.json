@@ -1,0 +1,13 @@
+{
+  "repo-name": "workday-raas-connector",
+  "code-owners": "@amisra97 @manju-m-hevo @sanskarmundhra @sourabhchandel-rgb",
+  "repo-description": "Repo for wokday Raas connector.",
+  "team": "dev",
+  "jira-id": "HC-453",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DRWIP/pages/edit-v2/6022758401?draftShareId=d099cd42-c409-4a4b-9040-d8d2b6186078",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "workday-raas",
+    "framework": "connector_framework"
+  }
+}

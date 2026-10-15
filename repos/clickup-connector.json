@@ -1,0 +1,13 @@
+{
+  "repo-name": "clickup-connector",
+  "code-owners": "@amisra97 @manju-m-hevo @vijaysreekalvakolanu-create",
+  "repo-description": "Clickup connector for Hevo Edge",
+  "team": "dev",
+  "jira-id": "H2-126983",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5399478360/Connector+development+using+HCA+from+scratch",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "clickup",
+    "framework": "connector_framework"
+  }
+}

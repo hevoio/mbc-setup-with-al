@@ -1,0 +1,12 @@
+{
+  "repo-name": "tiktok-connector",
+  "code-owners": "@vkiooz",
+  "repo-description": "sample",
+  "team": "dev",
+  "jira-id": "INF-1234",
+  "confluence-url": "https://release.hevo.me/release/repositories/new",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "tiktok"
+  }
+}

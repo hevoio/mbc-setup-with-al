@@ -1,0 +1,13 @@
+{
+  "repo-name": "recharge-connector",
+  "code-owners": "@Anubhav410 @maharshi-hevo @skand-agrawal",
+  "repo-description": "Finance SaaS connector for recharge on Edge",
+  "team": "dev",
+  "jira-id": "H2-222228",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5872517142/Recharge+Connector+-+Research+Doc",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "recharge",
+    "framework": "connector_framework"
+  }
+}

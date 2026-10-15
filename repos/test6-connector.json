@@ -1,0 +1,13 @@
+{
+  "repo-name": "test6-connector",
+  "code-owners": "@tanvir2110",
+  "repo-description": "test6-connector",
+  "team": "dev",
+  "jira-id": "DEVX-417",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/lACDOgE",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "test6",
+    "framework": "connector_framework"
+  }
+}

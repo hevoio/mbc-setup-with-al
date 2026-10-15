@@ -1,0 +1,11 @@
+{
+  "repo-name": "bugsy",
+  "code-owners": "@aruntcet2010 @talha31093",
+  "repo-description": "Oncall Debugger Agent",
+  "team": "dev",
+  "jira-id": "HEVO-19725",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5525471252/Oncall+Debugging+Agent+Plan+and+Design",
+  "repo-config": {
+    "type": "general"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "repo-name": "data-diff",
+  "code-owners": "@sar009",
+  "repo-description": "Data Diff between database tables.",
+  "team": "dev",
+  "jira-id": "H2-5182",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/3442967315/Sentinel+-+Test+Automation+Framework",
+  "repo-config": {
+    "language": "general"
+  }
+}

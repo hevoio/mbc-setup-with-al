@@ -1,0 +1,13 @@
+{
+  "repo-name": "neonpixel-connector",
+  "code-owners": "@amisra97 @manju-m-hevo @utsav-varia",
+  "repo-description": "Neon Pixel Connector",
+  "team": "dev",
+  "jira-id": "HC-276",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/~62a4421c8783e7006f63ce18/pages/5583011851/Connector+for+Caraway",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "neonpixel",
+    "framework": "connector_framework"
+  }
+}

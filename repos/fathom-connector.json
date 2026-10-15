@@ -1,0 +1,13 @@
+{
+  "repo-name": "fathom-connector",
+  "code-owners": "@Ankitkumar-23",
+  "repo-description": "Fathom Connector for Hevo Edge Platform",
+  "team": "dev",
+  "jira-id": "H2-126824",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5399478360/Connector+development+using+HCA+from+scratch",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "fathom",
+    "framework": "connector_framework"
+  }
+}

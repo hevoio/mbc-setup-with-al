@@ -1,0 +1,13 @@
+{
+  "repo-name": "snapchat-ads-connector",
+  "code-owners": "@amolagrawal-git @amisra97 @manju-m-hevo",
+  "repo-description": "Snapchat Ads source connector for Hevo.",
+  "team": "dev",
+  "jira-id": "H2-196523",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/~7120204f69795873be4164af295bda55f4ce15/pages/5769920583/Snapchat+Ads+Connector+Research+Doc?atlOrigin=eyJpIjoiMWFkOWEzOGY0MTVkNDk0ZmFkMGE1ODE4OGMzNTA4Y2YiLCJwIjoiYyJ9",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "snapchat-ads",
+    "framework": "connector_framework"
+  }
+}

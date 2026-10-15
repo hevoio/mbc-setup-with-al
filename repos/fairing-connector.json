@@ -1,0 +1,13 @@
+{
+  "repo-name": "fairing-connector",
+  "code-owners": "@amisra97 @manju-m-hevo",
+  "repo-description": "Fairing connecotr in edge",
+  "team": "dev",
+  "jira-id": "HC-205",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/~62a4421c8783e7006f63ce18/pages/5583011851/Connector+for+Caraway",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "fairing",
+    "framework": "connector_framework"
+  }
+}

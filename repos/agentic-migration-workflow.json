@@ -1,0 +1,11 @@
+{
+  "repo-name": "agentic-migration-workflow",
+  "code-owners": "@iamshahjahan",
+  "repo-description": "Repo to support agentic migration",
+  "team": "dev",
+  "jira-id": "H2-110463",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/4435345453/Migration+Flow",
+  "repo-config": {
+    "type": "general"
+  }
+}

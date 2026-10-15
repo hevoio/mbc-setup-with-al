@@ -1,0 +1,13 @@
+{
+  "repo-name": "facebook-ads-connector",
+  "code-owners": "@anmol00804 @amisra97 @manju-m-hevo",
+  "repo-description": "Connector for facebook ads",
+  "team": "dev",
+  "jira-id": "HC-31",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5452070937/Google+Ads+Connector+-+Research+doc",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "facebook-ads",
+    "framework": "connector_framework"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "repo-name": "dragonstone",
+  "code-owners": "@vkiooz",
+  "repo-description": "CI Runner",
+  "team": "platform",
+  "jira-id": "INF-0000",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/INFRA/overview",
+  "repo-config": {
+    "type": "general"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "repo-name": "sfmc-connector",
+  "code-owners": "@anmol00804 @amisra97 @manju-m-hevo",
+  "repo-description": "New repo for connector salesforce marketing cloud",
+  "team": "dev",
+  "jira-id": "HC-7",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5446303772/SFMC",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "sfmc",
+    "framework": "connector_framework"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "repo-name": "cockroachdb-connector",
+  "code-owners": "@abhilash-hevo @animesh-hevo @shashank-hevo @vikas-jha-hevo",
+  "repo-description": "Hevo 2.0 Cockroach DB Connector",
+  "team": "dev",
+  "jira-id": "H2-31049",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5259657258/TRD+Cockroach+DB+Connector",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "cockroachdb",
+    "framework": "connector_framework"
+  }
+}

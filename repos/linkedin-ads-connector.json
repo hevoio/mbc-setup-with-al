@@ -1,0 +1,13 @@
+{
+  "repo-name": "linkedin-ads-connector",
+  "code-owners": "@amisra97 @ayushkumar-hash @manju-m-hevo",
+  "repo-description": "Code base for creating linkedin ads connector for edge platform.",
+  "team": "dev",
+  "jira-id": "HC-130",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5679546390/Linkedin+Ads+Populating+Data+Limitations",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "linkedin-ads",
+    "framework": "connector_framework"
+  }
+}

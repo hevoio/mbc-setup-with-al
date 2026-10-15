@@ -1,0 +1,13 @@
+{
+  "repo-name": "apple-search-ads-connector",
+  "code-owners": "@amisra97",
+  "repo-description": "Repo for making apple search ads connector.",
+  "team": "dev",
+  "jira-id": "HC-312",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5765332993/Apple+Search+Ads+Connector+-+Research+doc",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "apple-search-ads",
+    "framework": "connector_framework"
+  }
+}

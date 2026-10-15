@@ -1,0 +1,12 @@
+{
+  "repo-name": "stripe-connector",
+  "code-owners": "@manasa-vl @abhilash-hevo @shameekbaranwal",
+  "repo-description": "Stripe Connector for Hevo",
+  "team": "dev",
+  "jira-id": "H2-28508",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/EgDjKAE",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "stripe"
+  }
+}

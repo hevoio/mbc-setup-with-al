@@ -1,0 +1,13 @@
+{
+  "repo-name": "chargebee-connector",
+  "code-owners": "@nihalrwt",
+  "repo-description": "Finance SaaS connector for Chargebee",
+  "team": "dev",
+  "jira-id": "H2-222234",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5877497878/Chargebee+Connector+-+Research+Doc",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "chargebee",
+    "framework": "connector_framework"
+  }
+}

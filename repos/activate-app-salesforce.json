@@ -1,0 +1,14 @@
+{
+  "repo-name": "activate-app-salesforce",
+  "code-owners": "@abhilashtdharan @aruntcet2010 @talha31093",
+  "repo-description": "Salesforce activator for Activate 2.0",
+  "team": "dev",
+  "jira-id": "H2-192763",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/INFRA/pages/5822185473/Activate+2.0+Homer+changes",
+  "repo-config": {
+    "type": "java",
+    "group-id": "io.hevo",
+    "artefact-id": "activate-app-salesforce",
+    "java-package-type": "service"
+  }
+}

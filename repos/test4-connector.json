@@ -1,0 +1,12 @@
+{
+  "repo-name": "test4-connector",
+  "code-owners": "@tanvir2110",
+  "repo-description": "test4-connector",
+  "team": "dev",
+  "jira-id": "DEVX-417",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/lACDOgE",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "test4"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "repo-name": "hevo-auth-ui-lib",
+  "code-owners": "@surajpoddar16 @divy221b",
+  "repo-description": "Auth UI for Hevo Products",
+  "team": "dev",
+  "jira-id": "H2-4948",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/UI/pages/4342349872/Migration+of+Authentication+Code+to+an+NPM+Library",
+  "repo-config": {
+    "language": "general"
+  }
+}

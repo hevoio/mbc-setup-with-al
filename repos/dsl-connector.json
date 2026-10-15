@@ -1,0 +1,13 @@
+{
+  "repo-name": "dsl-connector",
+  "code-owners": "@abhilash-hevo @adrijshikhar @aruntcet2010 @ash070397",
+  "repo-description": "Generic DSL connector runtime + dsl-cli \u2014 executes any connector described by a Hevo DSL bundle (schema.yml + streams.yml) over connector-framework + saas-cdk",
+  "team": "dev",
+  "jira-id": "H2-192928",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5728501785/DSL-Based+Connector+Lifecycle+Design\"",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "dsl",
+    "framework": "connector_framework"
+  }
+}

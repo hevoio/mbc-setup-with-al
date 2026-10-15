@@ -1,0 +1,13 @@
+{
+  "repo-name": "microsoft-365-business-central-connector",
+  "code-owners": "@Anubhav410 @ayushgupta-lion",
+  "repo-description": "Hevo connector for Microsoft Dynamics 365 Business Central \u2014 syncs standard and customer-exposed AL API pages (accounting, sales, inventory, CRM data) via OAuth 2.0/Azure AD and OData v4, using a uniform systemId/systemModifiedAt upsert pattern across all objects. Requires a customer-installed AL extension in their BC tenant.",
+  "team": "dev",
+  "jira-id": "H2-222232",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5876416603/Microsoft+365+Business+Central+Connector+-+Research+Doc",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "microsoft-365-business-central",
+    "framework": "connector_framework"
+  }
+}

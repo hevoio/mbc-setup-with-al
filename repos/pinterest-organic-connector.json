@@ -1,0 +1,13 @@
+{
+  "repo-name": "pinterest-organic-connector",
+  "code-owners": "@amisra97 @arshahmad-hash @manju-m-hevo",
+  "repo-description": "Pinterest Organic connector syncs pin data, user account details, and organic performance analytics from a connected Pinterest business account via OAuth 2.0. Covers 14 tables of pin-level and account-level metrics by device and content type. Analytics limited to 90-day historical window.",
+  "team": "dev",
+  "jira-id": "HC-0000",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5808226352/Untitled+live+doc+2026-08-12+3",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "pinterest-organic",
+    "framework": "connector_framework"
+  }
+}

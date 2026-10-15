@@ -1,0 +1,13 @@
+{
+  "repo-name": "doc-automation-demo-connector",
+  "code-owners": "@Shovit1 @Siddhant-Saha",
+  "repo-description": "Demo connector repo to test doc-automation workflow and hca initialize",
+  "team": "dev",
+  "jira-id": "DOC-2832",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DRWIP/pages/5529927694/DOC-2832+Docs+Auto-create+DOC+tickets+and+Raise+Documentation+PRs+when+Connector+YAML+Files+are+created+or+modified+Phase+2",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "doc-automation-demo",
+    "framework": "connector_framework"
+  }
+}

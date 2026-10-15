@@ -1,0 +1,11 @@
+{
+  "repo-name": "mbc-setup-with-al",
+  "code-owners": "@aravmanaktala",
+  "repo-description": "Repo has AL files to help with Microsoft Business Central connector configuration and setup",
+  "team": "dev",
+  "jira-id": "H2-222232",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5876416603/Microsoft+365+Business+Central+Connector+-+Research+Doc?xpis=eyJicmlkZ2UiOiJxdWlja0ZpbmQiLCJpZCI6IjE3OTIwNjIwNDQ2MDkiLCJzb3VyY2UiOiJjb25mbHVlbmNlIn0%3D",
+  "repo-config": {
+    "type": "general"
+  }
+}

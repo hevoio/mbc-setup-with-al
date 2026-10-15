@@ -1,0 +1,11 @@
+{
+  "repo-name": "template-connector",
+  "code-owners": "@aruntcet2010 @abhilashtdharan",
+  "repo-description": "Template Connector for Source Connectors",
+  "team": "dev",
+  "jira-id": "H2-14117",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/4867948602/Template+Connector",
+   "repo-config": {
+        "language": "general"
+    }
+}

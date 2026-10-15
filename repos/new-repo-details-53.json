@@ -1,0 +1,14 @@
+{
+  "repo-name": "hevo-mongo-driver-sync",
+  "code-owners": "@NitinBindal-Hevo @shashank-hevo",
+  "repo-description": "Hevo mongo driver sync wrapper implementation. Version : 5.5.1",
+  "team": "integrations",
+  "jira-id": "IN-4142",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/4531880019/WIP+Upgrading+Mongo+Driver",
+  "repo-config": {
+    "language": "java",
+    "group-id": "io.hevo",
+    "artefact-id": "hevo-mongo-driver-sdk",
+    "repo_type": "lib"
+  }
+}

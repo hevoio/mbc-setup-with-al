@@ -1,0 +1,13 @@
+{
+  "repo-name": "whatsapp-business-connector",
+  "code-owners": "@Anubhav410 @tanishkaa-chauhan",
+  "repo-description": "Hevo connector for extracting data from the WhatsApp Business API",
+  "team": "dev",
+  "jira-id": "H2-233326",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5972197417/WhatsApp+Business+Connector",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "whatsapp-business",
+    "framework": "connector_framework"
+  }
+}

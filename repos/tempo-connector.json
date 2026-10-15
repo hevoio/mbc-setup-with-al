@@ -1,0 +1,13 @@
+{
+  "repo-name": "tempo-connector",
+  "code-owners": "@eye-anirban2 @amisra97 @aravmanaktala @manju-m-hevo @siddharthachauhan89",
+  "repo-description": "Tempo Connector via HCA",
+  "team": "dev",
+  "jira-id": "HC-275",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5767757843/Tempo+Connector+Via+HCA",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "tempo",
+    "framework": "connector_framework"
+  }
+}

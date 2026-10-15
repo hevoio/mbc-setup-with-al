@@ -1,0 +1,13 @@
+{
+  "repo-name": "pipedrive-connector",
+  "code-owners": "@amisra97 @manju-m-hevo",
+  "repo-description": "Description ",
+  "team": "dev",
+  "jira-id": "H2-122330",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/WIDVQQE",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "pipedrive",
+    "framework": "connector_framework"
+  }
+}

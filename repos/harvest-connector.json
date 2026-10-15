@@ -1,0 +1,13 @@
+{
+  "repo-name": "harvest-connector",
+  "code-owners": "@MuskanHevo",
+  "repo-description": "Harvest Connector for Edge Platform",
+  "team": "dev",
+  "jira-id": "H2-129491",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5399478360/Connector+development+using+HCA+from+scratch",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "harvest",
+    "framework": "connector_framework"
+  }
+}

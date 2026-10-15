@@ -1,0 +1,11 @@
+{
+    "repo-name": "surge-ui",
+    "code-owners": "@aruntcet2010 @hevosriyans @sarthakbhardwajhevo",
+    "repo-description": "Surge UI",
+    "team": "marketing",
+    "jira-id": "IN-4459",
+    "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/PROD/pages/4742283318/Hevo+Customer+Engagement360",
+     "repo-config": {
+          "language": "general"
+      }
+  }

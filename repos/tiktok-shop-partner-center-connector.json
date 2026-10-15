@@ -1,0 +1,13 @@
+{
+  "repo-name": "tiktok-shop-partner-center-connector",
+  "code-owners": "@amisra97 @ayushkumar-hash @manju-m-hevo @sanskarmundhra @sumit-hevo",
+  "repo-description": "tiktok-shop-partner-center-connector",
+  "team": "dev",
+  "jira-id": "HC-188",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/x/AQAwZgE",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "tiktok-shop-partner-center",
+    "framework": "connector_framework"
+  }
+}

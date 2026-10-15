@@ -1,0 +1,11 @@
+{
+  "repo-name": "atlas",
+  "code-owners": "@abhilash-hevo @abhilashtdharan @amit-hevodata @aruntcet2010 @sar009",
+  "repo-description": "Hevo Dev Agent for coding, pr reviews, debugging etc",
+  "team": "dev",
+  "jira-id": "HES-1",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/PROD/pages/5253955721/Hevo+Signals+Brief",
+  "repo-config": {
+    "type": "general"
+  }
+}

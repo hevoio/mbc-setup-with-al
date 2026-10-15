@@ -1,0 +1,11 @@
+{
+  "repo-name": "intellij-psi-mcp-server",
+  "code-owners": "@aruntcet2010 @abhilashtdharan",
+  "repo-description": "Intellij mcp plugin on top of PSI",
+  "team": "dev",
+  "jira-id": "H2-27330",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/4867948602/Template+Connector",
+   "repo-config": {
+        "language": "general"
+    }
+}

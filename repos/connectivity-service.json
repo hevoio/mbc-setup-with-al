@@ -1,0 +1,11 @@
+{
+  "repo-name": "connectivity-service",
+  "code-owners": "@vkiooz",
+  "repo-description": "Advanced Connectivity Options",
+  "team": "platform",
+  "jira-id": "INF-1271",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/INFRA/pages/5267193864/Edge+Configs+Config+Management+for+H2O+2.0+Services",
+  "repo-config": {
+    "type": "general"
+  }
+}

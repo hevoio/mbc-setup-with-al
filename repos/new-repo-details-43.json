@@ -1,0 +1,12 @@
+{
+  "repo-name": "megatron-ui",
+  "code-owners": "@akashhevo @surajpoddar16 @sar009",
+  "repo-description": "Hevo Transformation Frontend Code Repo",
+  "team": "dev",
+  "jira-id": "DEVX-235",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/4116971533/Hevo-Transformer",
+  "repo-config": {
+    "language": "general"
+  }
+}
+

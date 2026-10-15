@@ -1,0 +1,11 @@
+{
+  "repo-name": "gradle-bom",
+  "code-owners": "@adrijshikhar @abhilash @91pratyush",
+  "repo-description": "Gradle Bill of Materials for Hevo Connectors",
+  "team": "dev",
+  "jira-id": "H2-26650",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5094473746/Connector+Framework+-+Template+Connector",
+   "repo-config": {
+        "type": "general"
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "repo-name": "flat-files-connector",
+  "code-owners": "@VishalSourav",
+  "repo-description": "Connector repo for flat file sources",
+  "team": "dev",
+  "jira-id": "H2-222249",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/folder/5853085699?atlOrigin=eyJpIjoiYzU3NWRiN2Y1ODE1NDQwNTk4NGQzMjdkOTEyODE3ZmYiLCJwIjoiYyJ9",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "flat-files",
+    "framework": "connector_framework"
+  }
+}

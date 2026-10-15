@@ -1,0 +1,13 @@
+{
+  "repo-name": "checkout-connector",
+  "code-owners": "@Anubhav410 @prakharparmar-beep",
+  "repo-description": "Checkout.com connector (finance-sass-connector)",
+  "team": "dev",
+  "jira-id": "H2-240502",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/5972066333/Checkout.com+connector+Research+Doc",
+  "repo-config": {
+    "type": "connector",
+    "connector-id": "checkout",
+    "framework": "connector_framework"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "repo-name": "sentinel-psrs",
+  "code-owners": "@rajeshpatelhevo @vidhatajain1 @pancht",
+  "repo-description": "Hevo Sentinel PSRS",
+  "team": "dev",
+  "jira-id": "H2-5605",
+  "confluence-url": "https://hevodata.atlassian.net/wiki/spaces/DEV/pages/4460576799/PSRS+Incremental",
+   "repo-config": {
+        "language": "general"
+    }
+}
