@@ -18,7 +18,7 @@ with its manifest in [`app.json`](app.json).
 | | |
 |---|---|
 | Publisher / name | Hevo Data / Hevo Business Central Connector |
-| Version | 1.2.1.0 |
+| Version | 1.2.1.2 |
 | Target | Business Central online (Cloud), platform and application 28.0+, AL runtime 17.0 |
 | Dependencies | none beyond Microsoft's Base and System Application |
 | Object IDs | 86500–86649 |
@@ -71,7 +71,7 @@ Companies themselves come from Business Central's built-in `companies` entity.
 1. **Build the `.app`.** Open this folder in VS Code with the
    [AL Language extension](https://marketplace.visualstudio.com/items?itemName=ms-dynamics-smb.al),
    run **AL: Download symbols** against a sandbox, then **AL: Package** (`Ctrl+Shift+B`).
-   This produces `Hevo Data_Hevo Business Central Connector_1.2.1.0.app`.
+   This produces `Hevo Data_Hevo Business Central Connector_1.2.1.2.app`.
 2. **Upload it.** In Business Central open **Extension Management → Manage → Upload Extension**,
    choose the `.app`, and deploy it. Try a sandbox environment first.
 3. **Grant access.** Assign the `HEVO READ` permission set to the user, or Microsoft Entra
@@ -83,8 +83,9 @@ Companies themselves come from Business Central's built-in `companies` entity.
    row with `deleteCaptureEnabled = true`.
 
 Upgrading from an earlier version of this extension is done in place by uploading the new `.app`.
-From 1.2.1.0, installing or upgrading also turns delete capture back on in any company where it
-was turned off.
+Business Central only upgrades to a higher version, so a new build must carry a version above the
+one installed (1.2.1.2 supersedes the internal 1.2.1.0 and 1.2.1.1 test builds). From 1.2.1.0,
+installing or upgrading also turns delete capture back on in any company where it was turned off.
 
 ## Permissions
 
