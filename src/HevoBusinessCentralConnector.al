@@ -4,8 +4,10 @@
 // Business Central connector syncs (the companies entity is Business Central's own), and delete
 // capture: every delete of a row those pages read is recorded as a tombstone in the deleting
 // company, inside the deleting transaction, and served by the deletedRecords and integrationStatus
-// pages. Capture is on by default in every company (setup row created on install, upgrade and
-// company creation); an admin can turn it off per company on the Hevo Integration Setup page.
+// pages. Capture is on by default in every company: install and upgrade turn it on, and a new
+// company is created with it on. Hevo's connector reads deletes only from this feed, so a company
+// whose capture an admin turns off on the Hevo Integration Setup page fails its syncs until it is
+// turned back on.
 //
 // Layout: the hand-written delete capture objects first, then the objects generated from
 // contract/entities.json by tools/generate_pages.py between the two marker lines. Edit the contract
@@ -28,7 +30,7 @@ codeunit 86501 "Hevo Delete Capture"
 
     var
         CompaniesEntitySetTxt: Label 'companies', Locked = true;
-        MissedCaptureTxt: Label 'Hevo delete capture: a row of table %1 was deleted without its SystemId loaded, so no tombstone was written. The connector''s weekly complete read flags it.', Locked = true;
+        MissedCaptureTxt: Label 'Hevo delete capture: a row of table %1 was deleted without its SystemId loaded, so no tombstone was written. Hevo flags it only at the table''s next complete read (a resync).', Locked = true;
 
     /// <summary>
     /// Records one deleted row, in the company the row belonged to (a delete made through
@@ -112,7 +114,7 @@ codeunit 86501 "Hevo Delete Capture"
     /// <summary>
     /// Capture is on unless the company's setup row turns it off. A company without a row (created
     /// before this version was installed and never initialized) is captured, and reports no row on
-    /// integrationStatus, so the connector does not trust its feed.
+    /// integrationStatus, so the connector fails that company's syncs until the row exists.
     /// </summary>
     procedure IsCaptureEnabled(RecordCompany: Text): Boolean
     var
@@ -134,16 +136,20 @@ codeunit 86501 "Hevo Delete Capture"
     end;
 
     /// <summary>
-    /// Creates the company's setup row with capture on, if missing. With RestartCapture, an existing
-    /// row with capture on restarts its complete-from time: used on install, because deletes made
-    /// while the extension was uninstalled (without deleting its data) have no tombstone.
+    /// Creates the company's setup row with capture on, if missing, and turns capture on in an
+    /// existing row that has it off: Hevo's connector has no other way to see deletes. Turning it on
+    /// restarts the complete-from time, since deletes made while it was off have no tombstone. With
+    /// RestartCapture, a row with capture already on restarts its complete-from time too: used on
+    /// install, because deletes made while the extension was uninstalled (without deleting its data)
+    /// have no tombstone.
     /// </summary>
     procedure EnsureSetup(RestartCapture: Boolean): Boolean
     var
         Setup: Record "Hevo Integration Setup";
     begin
         if Setup.Get() then begin
-            if RestartCapture and Setup."Delete Capture Enabled" then begin
+            if RestartCapture or not Setup."Delete Capture Enabled" then begin
+                Setup."Delete Capture Enabled" := true;
                 Setup."Capture Enabled At" := CurrentDateTime();
                 Setup.Modify();
             end;
@@ -167,7 +173,7 @@ codeunit 86501 "Hevo Delete Capture"
     /// <summary>
     /// Company creation must never fail because of this extension: a user who may not create the
     /// setup row leaves the company without one, which integrationStatus reports (no row), so the
-    /// connector keeps reading that company in full. An admin opening the setup page creates it.
+    /// connector fails that company's syncs with the fix. An admin opening the setup page creates it.
     /// </summary>
     local procedure InitializeCompanyIfPermitted()
     var
@@ -180,7 +186,7 @@ codeunit 86501 "Hevo Delete Capture"
 
     /// <summary>
     /// Allows a retention policy on the tombstone table, filtered on Deleted At, never shorter than a
-    /// week (the connector's weekly complete read is the fallback for anything older). Per company:
+    /// week (a purge past a pipeline's checkpoint fails that pipeline's object until a Resync). Per company:
     /// "Retention Policy Allowed Table" is per company, and registering per database fails to install
     /// (spike 0.1.0.0, 2026-10-14).
     /// </summary>
@@ -487,7 +493,7 @@ page 86601 "Hevo Integration Setup"
 
                 field("Delete Capture Enabled"; Rec."Delete Capture Enabled")
                 {
-                    ToolTip = 'Specifies whether deleted records are recorded for Hevo. A Hevo pipeline set to the Tombstone feed delete capture mode needs it on in every company it syncs, and fails its connection test while it is off. Pipelines set to the Weekly full read do not use it. Turning it back on makes Hevo read each table in full once.';
+                    ToolTip = 'Specifies whether deleted records are recorded for Hevo. On by default. Hevo reads this company''s deleted records only from here, so every Hevo pipeline that syncs this company fails while it is off. Deletes made while it was off are not recorded: after turning it back on, resync the Hevo pipelines that sync this company.';
                 }
                 field("Capture Enabled At"; Rec."Capture Enabled At")
                 {
@@ -516,8 +522,8 @@ page 86601 "Hevo Integration Setup"
 page 86602 "Hevo Integration Status"
 {
     // One row per company that has a setup row. The connector trusts a company's tombstone feed only
-    // from deletesCompleteFrom; no row (extension 1.1, or a company never initialized), capture off,
-    // or a marker older than deletesCompleteFrom sends the object to a complete read instead.
+    // from deletesCompleteFrom: a checkpoint older than it fails the object until a Resync. No row
+    // (extension 1.1, or a company never initialized) or capture off fails the company's sync.
     PageType = API;
     APIPublisher = 'hevo';
     APIGroup = 'businessCentral';
@@ -574,8 +580,9 @@ codeunit 86502 "Hevo Install"
     var
         DeleteCapture: Codeunit "Hevo Delete Capture";
     begin
-        // A reinstall after an uninstall that kept the data restarts the feed's complete-from time:
-        // deletes made in between have no tombstone. No business data is read or changed.
+        // Turns capture on. A reinstall after an uninstall that kept the data restarts the feed's
+        // complete-from time: deletes made in between have no tombstone. No business data is read
+        // or changed.
         DeleteCapture.InitializeCompany(true);
     end;
 }
@@ -590,7 +597,8 @@ codeunit 86503 "Hevo Upgrade"
         DeleteCapture: Codeunit "Hevo Delete Capture";
     begin
         // From 1.1.0.0 (no capture): create the setup row, capture on from now, and the default
-        // retention policy. From 1.2.0.0 or later: keep the row as it is, so the feed stays complete.
+        // retention policy. From 1.2.0.0 or later: keep a row with capture on as it is, so the feed
+        // stays complete; turn capture back on in a row that has it off (complete from now).
         // Idempotent; no business data is read or changed.
         DeleteCapture.InitializeCompany(false);
     end;
