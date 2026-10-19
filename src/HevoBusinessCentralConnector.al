@@ -4,10 +4,10 @@
 // Business Central connector syncs (the companies entity is Business Central's own), and delete
 // capture: every delete of a row those pages read is recorded as a tombstone in the deleting
 // company, inside the deleting transaction, and served by the deletedRecords and integrationStatus
-// pages. Capture is off by default in every company: install, upgrade and company creation create
-// the setup row with it off, and an admin turns it on per company on the Hevo Integration Setup
-// page. Install and upgrade never change the flag of an existing row. Hevo's connector reads deletes
-// only from this feed, so it sees no deletes in a company until capture is on there.
+// pages. Capture is on by default in every company: install and upgrade turn it on, and a new
+// company is created with it on. Hevo's connector reads deletes only from this feed, so a company
+// whose capture an admin turns off on the Hevo Integration Setup page fails its syncs until it is
+// turned back on.
 //
 // Layout: the hand-written delete capture objects first, then the objects generated from
 // contract/entities.json by tools/generate_pages.py between the two marker lines. Edit the contract
@@ -112,9 +112,9 @@ codeunit 86501 "Hevo Delete Capture"
     end;
 
     /// <summary>
-    /// Capture is off unless the company's setup row turns it on. A company without a row (created
-    /// before this version was installed and never initialized) is not captured, and reports no row
-    /// on integrationStatus.
+    /// Capture is on unless the company's setup row turns it off. A company without a row (created
+    /// before this version was installed and never initialized) is captured, and reports no row on
+    /// integrationStatus, so the connector fails that company's syncs until the row exists.
     /// </summary>
     procedure IsCaptureEnabled(RecordCompany: Text): Boolean
     var
@@ -126,7 +126,7 @@ codeunit 86501 "Hevo Delete Capture"
             Setup.ChangeCompany(RecordCompany);
         Setup.SetLoadFields("Delete Capture Enabled");
         if not Setup.Get() then
-            exit(false);
+            exit(true);
         exit(Setup."Delete Capture Enabled");
     end;
 
@@ -136,25 +136,28 @@ codeunit 86501 "Hevo Delete Capture"
     end;
 
     /// <summary>
-    /// Creates the company's setup row with capture off, if missing; an admin turns it on on the
-    /// setup page, which sets the complete-from time. An existing row keeps its flag. With
-    /// RestartCapture, a row with capture on restarts its complete-from time: used on install,
-    /// because deletes made while the extension was uninstalled (without deleting its data) have no
-    /// tombstone.
+    /// Creates the company's setup row with capture on, if missing, and turns capture on in an
+    /// existing row that has it off: Hevo's connector has no other way to see deletes. Turning it on
+    /// restarts the complete-from time, since deletes made while it was off have no tombstone. With
+    /// RestartCapture, a row with capture already on restarts its complete-from time too: used on
+    /// install, because deletes made while the extension was uninstalled (without deleting its data)
+    /// have no tombstone.
     /// </summary>
     procedure EnsureSetup(RestartCapture: Boolean): Boolean
     var
         Setup: Record "Hevo Integration Setup";
     begin
         if Setup.Get() then begin
-            if RestartCapture and Setup."Delete Capture Enabled" then begin
+            if RestartCapture or not Setup."Delete Capture Enabled" then begin
+                Setup."Delete Capture Enabled" := true;
                 Setup."Capture Enabled At" := CurrentDateTime();
                 Setup.Modify();
             end;
             exit(false);
         end;
         Setup.Init();
-        Setup."Delete Capture Enabled" := false;
+        Setup."Delete Capture Enabled" := true;
+        Setup."Capture Enabled At" := CurrentDateTime();
         Setup.Insert();
         exit(true);
     end;
@@ -422,7 +425,7 @@ table 86501 "Hevo Integration Setup"
         field(2; "Delete Capture Enabled"; Boolean)
         {
             Caption = 'Delete Capture Enabled';
-            InitValue = false;
+            InitValue = true;
 
             trigger OnValidate()
             begin
@@ -490,7 +493,7 @@ page 86601 "Hevo Integration Setup"
 
                 field("Delete Capture Enabled"; Rec."Delete Capture Enabled")
                 {
-                    ToolTip = 'Specifies whether deleted records are recorded for Hevo. Off by default. Hevo reads this company''s deleted records only from here, so Hevo sees no deletes in this company while it is off. Deletes made while it was off are not recorded: after turning it on, resync the Hevo pipelines that sync this company.';
+                    ToolTip = 'Specifies whether deleted records are recorded for Hevo. On by default. Hevo reads this company''s deleted records only from here, so every Hevo pipeline that syncs this company fails while it is off. Deletes made while it was off are not recorded: after turning it back on, resync the Hevo pipelines that sync this company.';
                 }
                 field("Capture Enabled At"; Rec."Capture Enabled At")
                 {
@@ -577,9 +580,9 @@ codeunit 86502 "Hevo Install"
     var
         DeleteCapture: Codeunit "Hevo Delete Capture";
     begin
-        // Creates the setup row with capture off. A reinstall after an uninstall that kept the data
-        // keeps the row's flag and, if capture is on, restarts the feed's complete-from time:
-        // deletes made in between have no tombstone. No business data is read or changed.
+        // Turns capture on. A reinstall after an uninstall that kept the data restarts the feed's
+        // complete-from time: deletes made in between have no tombstone. No business data is read
+        // or changed.
         DeleteCapture.InitializeCompany(true);
     end;
 }
@@ -593,8 +596,9 @@ codeunit 86503 "Hevo Upgrade"
     var
         DeleteCapture: Codeunit "Hevo Delete Capture";
     begin
-        // From 1.1.0.0 (no capture): create the setup row with capture off, and the default
-        // retention policy. From 1.2.0.0 or later: keep the existing row as it is, capture on or off.
+        // From 1.1.0.0 (no capture): create the setup row, capture on from now, and the default
+        // retention policy. From 1.2.0.0 or later: keep a row with capture on as it is, so the feed
+        // stays complete; turn capture back on in a row that has it off (complete from now).
         // Idempotent; no business data is read or changed.
         DeleteCapture.InitializeCompany(false);
     end;
