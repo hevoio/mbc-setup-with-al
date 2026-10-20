@@ -114,7 +114,8 @@ codeunit 86501 "Hevo Delete Capture"
     /// <summary>
     /// Capture is on unless the company's setup row turns it off. A company without a row (created
     /// before this version was installed and never initialized) is captured, and reports no row on
-    /// integrationStatus; the connector does not fail that company's syncs because of it.
+    /// integrationStatus, so the connector fails that company's syncs (retried every run) until the
+    /// row exists.
     /// </summary>
     procedure IsCaptureEnabled(RecordCompany: Text): Boolean
     var
@@ -172,8 +173,8 @@ codeunit 86501 "Hevo Delete Capture"
 
     /// <summary>
     /// Company creation must never fail because of this extension: a user who may not create the
-    /// setup row leaves the company without one, which integrationStatus reports (no row); the
-    /// connector's syncs keep running. An admin opening the setup page creates it.
+    /// setup row leaves the company without one, which integrationStatus reports (no row), so the
+    /// connector fails that company's syncs with the fix. An admin opening the setup page creates it.
     /// </summary>
     local procedure InitializeCompanyIfPermitted()
     var
@@ -186,9 +187,9 @@ codeunit 86501 "Hevo Delete Capture"
 
     /// <summary>
     /// Allows a retention policy on the tombstone table, filtered on Deleted At, never shorter than a
-    /// week (a purge past a pipeline's checkpoint misses those deletes, without failing, until a
-    /// Resync). Per company: "Retention Policy Allowed Table" is per company, and registering per
-    /// database fails to install (spike 0.1.0.0, 2026-10-14).
+    /// week (a purge past a pipeline's checkpoint fails that pipeline's object until a Resync). Per
+    /// company: "Retention Policy Allowed Table" is per company, and registering per database fails
+    /// to install (spike 0.1.0.0, 2026-10-14).
     /// </summary>
     procedure AddAllowedTable()
     var
@@ -522,10 +523,9 @@ page 86601 "Hevo Integration Setup"
 page 86602 "Hevo Integration Status"
 {
     // One row per company that has a setup row. The connector trusts a company's tombstone feed only
-    // from deletesCompleteFrom: with a checkpoint older than it the object's earlier deletes are
-    // missed, without failing, until a Resync. No row (extension 1.1, or a company never initialized)
-    // does not fail the company's sync, and capture off does not either: the connector runs a weekly
-    // full resync of every object instead.
+    // from deletesCompleteFrom: a checkpoint older than it fails the object until a Resync. No row
+    // (extension 1.1, or a company never initialized) fails the company's sync; capture off does not
+    // fail it, the connector runs a weekly full resync of every object instead.
     PageType = API;
     APIPublisher = 'hevo';
     APIGroup = 'businessCentral';
