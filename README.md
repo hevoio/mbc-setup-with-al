@@ -101,14 +101,19 @@ The extension stores no credentials, tokens or URLs and makes no outbound HTTP r
 
 - Capture is **on by default** in every company: the setup row is created with capture on when the
   extension is installed or upgraded and when a new company is created, and installing or
-  upgrading turns it back on where an admin had turned it off.
+  upgrading turns it back on where an admin had turned it off. A company created by a user who may
+  not write the setup row gets none; its syncs fail, and are retried every run, until an admin
+  opens its **Hevo Integration Setup** page once.
 - **Keep it on.** Hevo reads deletes from this feed. Turning capture off in a company (on the
   **Hevo Integration Setup** page) does not make any Hevo Pipeline fail: instead, Hevo runs a weekly
   full resync of every object that syncs that company, so deleted records are still picked up, but
   only once a week and with a full read of each object.
-- **Gaps never fail a Pipeline.** If the feed no longer holds every delete since Hevo last read it
-  (capture turned off and back on, or deleted records purged by the retention policy before Hevo
-  read them), nothing fails, but those deletes are missed until the affected objects are resynced.
+- **Gaps fail the object until a resync.** If the feed no longer holds every delete since an
+  object's last checkpoint (capture turned off and back on with no sync in between, the extension
+  reinstalled, or deleted records purged by the retention policy before Hevo read them, such as a
+  Pipeline paused for longer than the retention period), that object fails until it is resynced.
+  Turning capture off and back on with a sync in between fails nothing, but deletes made since the
+  last weekly full resync are missed until the object is resynced.
 - The tombstone is written **inside the deleting transaction**, so a rolled-back delete leaves none
   and a committed delete always has one. Temporary records are ignored.
 - Capture **never makes a delete fail**: the tombstone and setup tables grant the needed access to
@@ -123,9 +128,9 @@ The extension stores no credentials, tokens or URLs and makes no outbound HTTP r
   `DeleteAll` row by row, and each row writes a tombstone. Posting large journals, date compression
   and other bulk deletes on the exposed tables take longer.
 - **Uninstalling fails the Pipeline.** Without the extension, Hevo Pipelines that sync the
-  environment fail. Reinstalling restarts `deletesCompleteFrom`, so deletes made before it are
-  missed until the objects are resynced; uninstalling with *Delete Extension Data* removes the
-  tombstones and setup.
+  environment fail, and are retried every run. Reinstalling restarts `deletesCompleteFrom`, so every
+  object that synced before the uninstall fails until it is resynced; uninstalling with *Delete
+  Extension Data* removes the tombstones and setup.
 - **Some deletes cannot be recorded.** A row deleted by code that never read it (key fields set,
   then `Delete`) has no `systemId` to record; the extension logs telemetry event `HEVO-0001`, and the
   row is marked deleted only when its object is next resynced.
