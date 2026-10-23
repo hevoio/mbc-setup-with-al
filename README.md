@@ -18,7 +18,7 @@ with its manifest in [`app.json`](app.json).
 | | |
 |---|---|
 | Publisher / name | Hevo Data / Hevo Business Central Connector |
-| Version | 1.2.1.2 |
+| Version | 1.2.1.3 |
 | Target | Business Central online (Cloud), platform and application 28.0+, AL runtime 17.0 |
 | Dependencies | none beyond Microsoft's Base and System Application |
 | Object IDs | 86500–86649 |
@@ -84,8 +84,9 @@ Companies themselves come from Business Central's built-in `companies` entity.
 
 Upgrading from an earlier version of this extension is done in place by uploading the new `.app`.
 Business Central only upgrades to a higher version, so a new build must carry a version above the
-one installed (1.2.1.2 supersedes the internal 1.2.1.0 and 1.2.1.1 test builds). From 1.2.1.0,
-installing or upgrading also turns delete capture back on in any company where it was turned off.
+one installed (1.2.1.3 supersedes 1.2.1.2, which superseded the internal 1.2.1.0 and 1.2.1.1
+test builds). From 1.2.1.0, installing or upgrading also turns delete capture back on in any
+company where it was turned off.
 
 ## Permissions
 
