@@ -502,7 +502,7 @@ page 86601 "Hevo Integration Setup"
                 }
                 field("Tombstones Purged Through"; Rec."Tombstones Purged Through")
                 {
-                    ToolTip = 'Specifies the newest deletion whose record was removed by the retention policy. Hevo reads a table in full if it has not synced since then.';
+                    ToolTip = 'Specifies the newest deletion whose record was removed by the retention policy. If a Hevo Pipeline has not synced a table since then, the table fails until you resync it.';
                 }
             }
         }
